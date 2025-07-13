@@ -18,12 +18,30 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'gayathri': ['Gayathri', 'serif'],
+				'inter': ['Inter', 'sans-serif'],
+				'inria': ['Inria Serif', 'serif'],
+				'tenor': ['Tenor Sans', 'sans-serif'],
+				'stick': ['Stick', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'background-warm': 'hsl(var(--background-warm))',
+				'background-dark': 'hsl(var(--background-dark))',
+				'background-darker': 'hsl(var(--background-darker))',
+				'text-primary': 'hsl(var(--text-primary))',
+				'text-dark': 'hsl(var(--text-dark))',
+				'text-darker': 'hsl(var(--text-darker))',
+				'accent-primary': 'hsl(var(--accent-primary))',
+				'accent-dark': 'hsl(var(--accent-dark))',
+				'accent-light': 'hsl(var(--accent-light))',
+				'border-light': 'hsl(var(--border-light))',
+				'border-dark': 'hsl(var(--border-dark))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -84,11 +102,62 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(40px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'scale-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'scale(0.95)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'scale-in': 'scale-in 0.4s ease-out',
+				'float': 'float 3s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-warm': 'var(--gradient-warm)',
+				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-dark': 'var(--gradient-dark)'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'accent': 'var(--shadow-accent)'
 			}
 		}
 	},

@@ -2,16 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Portfolio Design System - Vintage Modern Aesthetic */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Portfolio Color Palette */
+    --background: 37 28% 95%; /* #FFFFFF → warm cream #F5F2ED */
+    --foreground: 45 14% 29%; /* #4C4B44 */
+    --background-warm: 37 28% 90%; /* #E8D9C4 */
+    --background-dark: 50 27% 14%; /* #1E2418 */
+    --background-darker: 0 0% 5%; /* #0C0C0C */
+    
+    /* Text Colors */
+    --text-primary: 45 14% 29%; /* #4C4B44 */
+    --text-dark: 0 0% 0%; /* #000000 */
+    --text-darker: 60 5% 12%; /* #1D1E1C */
+    
+    /* Accent Colors */
+    --accent-primary: 162 23% 38%; /* #4A7C6E */
+    --accent-dark: 180 31% 19%; /* #214141 */
+    --accent-light: 153 28% 70%; /* #A0C6B7 */
+    
+    /* Borders */
+    --border-light: 0 0% 79%; /* #C9C9C9 */
+    --border-dark: 0 0% 17%; /* #2B2B2B */
+    
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background-warm)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-light)));
+    --gradient-dark: linear-gradient(135deg, hsl(var(--background-dark)), hsl(var(--background-darker)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(var(--accent-primary) / 0.1);
+    --shadow-accent: 0 8px 32px -8px hsl(var(--accent-primary) / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --card: 0 0% 100%;
+    --card: 37 28% 98%;
     --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
