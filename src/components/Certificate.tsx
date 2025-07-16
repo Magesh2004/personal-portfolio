@@ -165,12 +165,6 @@ const Certificate = () => {
   return (
     <>
       <section className="py-28" style={{ background: '#181C14' }} id="certificates" data-aos="fade-up">
-        <img
-          src="/golden-ribbon.png"
-          alt="Golden Ribbon"
-          className="hidden md:block animate-float-ribbon"
-          style={{ position: 'absolute', top: 0, left: 0, width: '140px', transform: 'rotate(-18deg)', zIndex: 20 }}
-        />
         <div className="max-w-7xl mx-auto px-8">
           <h2 className="font-gayathri text-6xl font-bold mb-12 text-center tracking-wide" style={{ color: '#fff' }} data-aos="fade-down">
             Certificates

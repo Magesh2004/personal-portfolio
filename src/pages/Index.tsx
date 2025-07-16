@@ -120,9 +120,8 @@ const Index = () => {
       />
       {/* Enhanced Vintage Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-500
-          ${navVisible ? 'opacity-100' : 'opacity-0 -translate-y-6'}
-          ${navShow ? 'translate-y-0' : '-translate-y-full opacity-0'}
+        className={`fixed top-0 left-0 w-full z-50 bg-transparent transition-transform duration-500
+          ${navShow ? 'translate-y-0' : '-translate-y-full'}
           shadow-sm backdrop-blur-sm`}
         style={{ 
           background: 'linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-warm)) 100%)', 
