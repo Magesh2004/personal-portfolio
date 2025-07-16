@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const placeholder = "/placeholder.svg";
 
@@ -177,21 +177,38 @@ const categories = ["All", ...Array.from(new Set(allProjects.map(p => p.category
 
 export default function ProjectsPage() {
   const [selected, setSelected] = useState("All");
+  const [titleText, setTitleText] = useState("");
   const projects = selected === "All" ? allProjects : allProjects.filter(p => p.category === selected);
   const canvasRef = useRef(null);
 
-  // Particle animation effect
+  // Typewriter effect for title
+  useEffect(() => {
+    const text = "My Projects";
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < text.length) {
+        setTitleText(text.substring(0, index + 1));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Enhanced particle animation with vintage colors
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    let particles = Array.from({ length: 60 }, () => ({
+    let particles = Array.from({ length: 80 }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      r: 1 + Math.random() * 2,
-      dx: -0.5 + Math.random(),
-      dy: -0.5 + Math.random(),
-      alpha: 0.2 + Math.random() * 0.5
+      r: 1 + Math.random() * 3,
+      dx: -0.3 + Math.random() * 0.6,
+      dy: -0.3 + Math.random() * 0.6,
+      alpha: 0.15 + Math.random() * 0.4,
+      color: Math.random() > 0.5 ? '#4A7C6E' : '#A0C6B7'
     }));
     let animationId;
     function animate() {
@@ -200,7 +217,7 @@ export default function ProjectsPage() {
         ctx.globalAlpha = p.alpha;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-        ctx.fillStyle = '#5e9082';
+        ctx.fillStyle = p.color;
         ctx.fill();
         p.x += p.dx;
         p.y += p.dy;
@@ -214,91 +231,193 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-      <section className="py-16 bg-background min-h-screen animate-fade-slide relative overflow-hidden pt-24" data-aos="fade-up">
-      {/* Particle Canvas */}
-      <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight} className="fixed top-0 left-0 w-full h-full pointer-events-none z-0" style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh'}} />
+    <section className="py-16 bg-background min-h-screen relative overflow-hidden pt-24">
+      {/* Enhanced Particle Canvas */}
+      <canvas 
+        ref={canvasRef} 
+        width={window.innerWidth} 
+        height={window.innerHeight} 
+        className="fixed top-0 left-0 w-full h-full pointer-events-none z-0" 
+        style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh'}} 
+      />
+      
+      {/* Vintage Paper Texture Overlay */}
+      <div className="fixed inset-0 bg-gradient-to-br from-background-warm/20 via-transparent to-background-warm/10 pointer-events-none z-0" />
+      
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Redesigned Head Section */}
-        <header className="relative flex flex-col items-center justify-center mb-14 pt-6 pb-10">
+        {/* Enhanced Header with Typewriter Effect */}
+        <header className="relative flex flex-col items-center justify-center mb-16 pt-8 pb-12">
+          {/* Vintage Decorative Frame */}
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none select-none">
-            <svg width="340" height="80" viewBox="0 0 340 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden md:block">
-              <ellipse cx="170" cy="40" rx="160" ry="28" fill="#5e9082" fillOpacity="0.08" />
-              <ellipse cx="170" cy="40" rx="120" ry="18" fill="#5e9082" fillOpacity="0.12" />
-            </svg>
+            <div className="w-96 h-32 border-4 border-accent-light/30 rounded-lg"
+                 style={{
+                   borderImage: 'url("data:image/svg+xml,%3csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3e%3cpath d=\'M0 0h100v100H0z\' fill=\'none\' stroke=\'%23A0C6B7\' stroke-width=\'2\' stroke-dasharray=\'5,5\'/%3e%3c/svg%3e") 2',
+                 }} 
+            />
           </div>
-          <h1 className="relative z-10 font-gayathri text-5xl md:text-6xl font-extrabold text-text-darker mb-4 tracking-tight text-center drop-shadow-lg">
-            <span className="bg-gradient-to-r from-accent-primary to-accent-light bg-clip-text text-transparent">My Projects</span>
+          
+          {/* Typewriter Title */}
+          <h1 className="relative z-10 font-gayathri text-6xl md:text-7xl font-extrabold text-text-darker mb-6 tracking-tight text-center">
+            <span className="bg-gradient-to-r from-accent-primary to-accent-light bg-clip-text text-transparent">
+              {titleText}
+              <span className="animate-pulse text-accent-primary">|</span>
+            </span>
           </h1>
+          
+          {/* Vintage Ornamental Divider */}
           <div className="relative z-10 flex flex-col items-center">
-            <span className="block w-24 h-1 rounded-full bg-accent-primary mb-4" />
-            <p className="font-inria text-lg md:text-xl text-text-primary max-w-2xl mx-auto text-center">
-              Explore my work across <span className="text-accent-primary font-semibold">Frontend</span>, <span className="text-accent-primary font-semibold">React</span>, <span className="text-accent-primary font-semibold">Fullstack</span>, and <span className="text-accent-primary font-semibold">Backend</span> projects. Each project showcases my skills in modern web development and problem solving.
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-px bg-accent-primary" />
+              <div className="w-3 h-3 border-2 border-accent-primary rounded-full bg-background" />
+              <div className="w-24 h-px bg-accent-primary" />
+              <div className="w-3 h-3 border-2 border-accent-primary rounded-full bg-background" />
+              <div className="w-12 h-px bg-accent-primary" />
+            </div>
+            
+            <p className="font-inria text-lg md:text-xl text-text-primary max-w-3xl mx-auto text-center leading-relaxed">
+              A curated collection of my <span className="text-accent-primary font-semibold italic">Frontend</span>, <span className="text-accent-primary font-semibold italic">React</span>, <span className="text-accent-primary font-semibold italic">Fullstack</span>, and <span className="text-accent-primary font-semibold italic">Backend</span> projects. Each piece showcases my passion for crafting elegant solutions and modern web experiences.
             </p>
           </div>
         </header>
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(cat => (
-            <button
+
+        {/* Enhanced Vintage Category Filter */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {categories.map((cat, index) => (
+            <motion.button
               key={cat}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               onClick={() => setSelected(cat)}
-              className={`px-5 py-2 rounded-full font-inter border border-accent-light shadow transition-all duration-200 hover:bg-accent-light/30 hover:text-accent-primary ${selected === cat ? 'bg-background-dark text-white border-background-dark' : 'text-accent-dark bg-white/80'}`}
+              className={`px-8 py-3 font-tenor text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 hover:rotate-1 ${
+                selected === cat 
+                  ? 'bg-background-dark text-white border-background-dark shadow-accent' 
+                  : 'text-accent-dark bg-background-warm border-accent-light hover:bg-accent-light/30 hover:text-accent-primary shadow-soft'
+              }`}
+              style={{
+                borderRadius: '2rem 1.5rem 2rem 1.5rem',
+                boxShadow: selected === cat ? '0 8px 32px -8px rgba(74, 124, 110, 0.4)' : '0 4px 20px -4px rgba(74, 124, 110, 0.2)',
+              }}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </div>
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-10">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-            >
-              <Card
-              className="bg-white border-0 shadow-soft hover:shadow-accent transition-all duration-500 group cursor-pointer animate-fade-in-up hover:scale-105 hover:-rotate-1 hover:-translate-y-2 vintage-project-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              data-aos="zoom-in"
-            >
-              <CardContent className="p-0 flex flex-col md:flex-row md:items-stretch">
-                {/* Project Image */}
-                <div className="md:w-1/2 w-full aspect-video bg-gradient-accent rounded-t-lg md:rounded-l-lg md:rounded-tr-none mb-0 md:mb-0 overflow-hidden flex items-center justify-center group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500">
-                  <img src={project.image} alt={project.title} className="object-cover w-full h-full" />
-                </div>
-                {/* Project Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between vintage-project-content">
-                  <div>
-                    <Badge variant="secondary" className="bg-accent-light/20 text-accent-dark border-0 mb-2">
-                      {project.category}
-                    </Badge>
-                    <h3 className="font-tenor text-xl font-bold text-text-darker mb-2 group-hover:text-accent-primary transition-colors group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-300 vintage-shadow">
-                      {project.title}
-                    </h3>
-                    <p className="font-inria text-text-primary leading-relaxed mb-2">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {project.tech.map((tag) => (
-                        <span key={tag} className="px-3 py-1 rounded-full bg-accent-light/60 text-accent-dark text-xs font-semibold shadow-sm border border-accent-light vintage-shadow">{tag}</span>
-                      ))}
+
+        {/* Enhanced Projects Grid with Staggered Animation */}
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={selected}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-2 gap-12"
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={`${selected}-${index}`}
+                initial={{ opacity: 0, y: 60, rotateX: 10 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.15,
+                  ease: [0.25, 0.8, 0.25, 1]
+                }}
+                className="group perspective-1000"
+              >
+                <Card className="bg-background-warm border-0 shadow-soft hover:shadow-accent transition-all duration-700 cursor-pointer overflow-hidden transform-gpu group-hover:scale-105 group-hover:rotate-1 group-hover:-translate-y-3"
+                      style={{
+                        borderRadius: '1.5rem 1.2rem 1.7rem 1.3rem',
+                        boxShadow: '0 8px 32px -8px rgba(74, 124, 110, 0.15), 0 2px 0 rgba(224, 214, 195, 0.8) inset',
+                        background: 'linear-gradient(135deg, #F5F2ED 0%, #E8D9C4 100%)',
+                        border: '2px solid rgba(160, 198, 183, 0.3)',
+                      }}
+                >
+                  <CardContent className="p-0 flex flex-col md:flex-row md:items-stretch relative">
+                    {/* Vintage Corner Ornaments */}
+                    <div className="absolute top-2 left-2 w-4 h-4 border-l-2 border-t-2 border-accent-primary opacity-60" />
+                    <div className="absolute top-2 right-2 w-4 h-4 border-r-2 border-t-2 border-accent-primary opacity-60" />
+                    <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 border-accent-primary opacity-60" />
+                    <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 border-accent-primary opacity-60" />
+                    
+                    {/* Project Image with Vintage Frame */}
+                    <div className="md:w-1/2 w-full aspect-video relative overflow-hidden rounded-t-lg md:rounded-l-lg md:rounded-tr-none m-2 md:m-0">
+                      <div className="absolute inset-0 bg-gradient-accent opacity-20 z-10" />
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2" 
+                        style={{
+                          filter: 'sepia(10%) saturate(110%) brightness(105%)',
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-background-dark/20 z-10" />
                     </div>
-                  </div>
-                  <div className="flex items-center gap-6 mt-6 text-gray-400 text-base font-inter">
-                    <a href={project.code} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent-primary transition-colors">
-                      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
-                      Code
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            </motion.div>
-          ))}
-        </div>
+                    
+                    {/* Enhanced Project Content */}
+                    <div className="p-6 flex-1 flex flex-col justify-between relative">
+                      <div>
+                        <Badge className="bg-accent-light/40 text-accent-dark border-accent-light mb-3 font-tenor text-sm font-semibold px-3 py-1"
+                               style={{
+                                 borderRadius: '1rem 0.5rem 1rem 0.5rem',
+                                 boxShadow: '0 2px 8px rgba(74, 124, 110, 0.2)',
+                               }}
+                        >
+                          {project.category}
+                        </Badge>
+                        
+                        <h3 className="font-gayathri text-2xl font-bold text-text-darker mb-3 group-hover:text-accent-primary transition-colors duration-300 leading-tight">
+                          {project.title}
+                        </h3>
+                        
+                        <p className="font-inria text-text-primary leading-relaxed mb-4 text-base">
+                          {project.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.tech.map((tag, tagIndex) => (
+                            <motion.span 
+                              key={tag}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.3, delay: tagIndex * 0.05 }}
+                              className="px-3 py-1 bg-accent-light/30 text-accent-dark text-sm font-semibold border border-accent-light/50 transition-all duration-300 hover:bg-accent-light/50 hover:scale-105"
+                              style={{
+                                borderRadius: '0.75rem 0.5rem 0.75rem 0.5rem',
+                              }}
+                            >
+                              {tag}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center gap-4 mt-4">
+                        <a 
+                          href={project.code} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex items-center gap-2 px-4 py-2 bg-accent-primary text-white font-tenor font-semibold transition-all duration-300 hover:bg-accent-dark hover:scale-105 hover:rotate-1"
+                          style={{
+                            borderRadius: '1.5rem 1rem 1.5rem 1rem',
+                            boxShadow: '0 4px 16px rgba(74, 124, 110, 0.3)',
+                          }}
+                        >
+                          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
+                          </svg>
+                          View Code
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
-} 
+}
