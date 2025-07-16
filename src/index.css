@@ -132,13 +132,16 @@
     background-color: #f5f2ed;
     background-image:
       url('data:image/svg+xml;utf8,<svg width="100%25" height="60" viewBox="0 0 1200 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 Q 100 60 200 40 T 400 40 T 600 50 T 800 30 T 1000 50 T 1200 40 V60 H0Z" fill="%23ede7de" stroke="%23d6cfc7" stroke-width="4"/></svg>'),
-      url('data:image/svg+xml;utf8,<svg width="100%25" height="60" viewBox="0 0 1200 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 20 Q 100 0 200 20 T 400 20 T 600 10 T 800 30 T 1000 10 T 1200 20 V0 H0Z" fill="%23ede7de" stroke="%23d6cfc7" stroke-width="4"/></svg>');
-    background-repeat: repeat-x, repeat-x;
-    background-position: top, bottom;
-    background-size: 100% 60px, 100% 60px;
+      url('data:image/svg+xml;utf8,<svg width="100%25" height="60" viewBox="0 0 1200 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 20 Q 100 0 200 20 T 400 20 T 600 10 T 800 30 T 1000 10 T 1200 20 V0 H0Z" fill="%23ede7de" stroke="%23d6cfc7" stroke-width="4"/></svg>'),
+      url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="vintage-bg" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23A0C6B7" opacity="0.08"/><circle cx="25" cy="20" r="0.5" fill="%23E8D9C4" opacity="0.06"/><circle cx="40" cy="30" r="0.8" fill="%23A0C6B7" opacity="0.1"/><circle cx="15" cy="35" r="0.3" fill="%23E8D9C4" opacity="0.05"/><circle cx="35" cy="45" r="0.6" fill="%23A0C6B7" opacity="0.09"/></pattern></defs><rect width="100" height="100" fill="url(%23vintage-bg)"/></svg>');
+    background-repeat: repeat-x, repeat-x, repeat;
+    background-position: top, bottom, 0 0;
+    background-size: 100% 60px, 100% 60px, 100px 100px;
     min-height: 100vh;
     /* Subtle paper texture overlay */
     position: relative;
+    /* Vintage sepia filter */
+    filter: sepia(5%) saturate(95%) brightness(102%);
   }
   body::after {
     content: '';
@@ -249,4 +252,27 @@
   box-shadow: 0 4px 12px 0 rgba(0,0,0,0.10);
   border: 3px solid #bcb7a1;
   z-index: 3;
+}
+
+/* Vintage Section Wrapper Styles */
+.vintage-section-wrapper {
+  position: relative;
+  background: linear-gradient(135deg, rgba(245, 242, 237, 0.95) 0%, rgba(232, 217, 196, 0.9) 100%);
+  backdrop-filter: blur(2px);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.vintage-section-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;utf8,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="vintage-texture" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="%23A0C6B7" opacity="0.15"/><circle cx="15" cy="10" r="0.3" fill="%23E8D9C4" opacity="0.1"/><circle cx="25" cy="15" r="0.4" fill="%23A0C6B7" opacity="0.12"/><circle cx="10" cy="20" r="0.2" fill="%23E8D9C4" opacity="0.08"/><circle cx="20" cy="25" r="0.3" fill="%23A0C6B7" opacity="0.1"/></pattern></defs><rect width="60" height="60" fill="url(%23vintage-texture)"/></svg>');
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vintage-section-wrapper > * {
+  position: relative;
+  z-index: 2;
 }

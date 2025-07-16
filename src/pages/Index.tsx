@@ -43,41 +43,81 @@ const Index = () => {
   }, [clickedTag]);
   return (
     <div className="min-h-screen relative">
-      {/* Vintage Paper Texture Overlay */}
-      <div className="fixed inset-0 opacity-15 pointer-events-none z-0" 
+      {/* Vintage Paper Texture Background */}
+      <div className="fixed inset-0 opacity-25 pointer-events-none z-0" 
            style={{
-             backgroundImage: `url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="vintage-grain" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.3" fill="%23A0C6B7" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23vintage-grain)"/></svg>')`,
+             backgroundImage: `url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="vintage-paper" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="%23F5F2ED"/><circle cx="5" cy="5" r="0.5" fill="%23E8D9C4" opacity="0.3"/><circle cx="15" cy="10" r="0.3" fill="%23A0C6B7" opacity="0.2"/><circle cx="25" cy="15" r="0.4" fill="%23E8D9C4" opacity="0.4"/><circle cx="35" cy="25" r="0.2" fill="%23A0C6B7" opacity="0.3"/><circle cx="10" cy="30" r="0.3" fill="%23E8D9C4" opacity="0.2"/><circle cx="30" cy="35" r="0.5" fill="%23A0C6B7" opacity="0.3"/></pattern></defs><rect width="200" height="200" fill="url(%23vintage-paper)"/></svg>')`,
            }}
       />
       
-      {/* Vintage Decorative Corner Flourishes */}
-      <div className="fixed top-4 left-4 w-16 h-16 opacity-20 pointer-events-none z-10">
+      {/* Vintage Aging Effect Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-0"
+           style={{
+             background: 'radial-gradient(circle at 20% 20%, rgba(232, 217, 196, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(232, 217, 196, 0.2) 0%, transparent 50%), radial-gradient(circle at 40% 70%, rgba(160, 198, 183, 0.1) 0%, transparent 50%)',
+           }}
+      />
+      
+      {/* Vintage Border Frame */}
+      <div className="fixed inset-4 pointer-events-none z-10 border-2 border-accent-primary/20 rounded-lg"
+           style={{
+             borderImage: 'url("data:image/svg+xml,%3csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3e%3cpath d=\'M0 0h100v100H0z\' fill=\'none\' stroke=\'%23A0C6B7\' stroke-width=\'2\' stroke-dasharray=\'8,4\'/%3e%3c/svg%3e") 2',
+           }}
+      />
+      
+      {/* Vintage Corner Flourishes */}
+      <div className="fixed top-8 left-8 w-20 h-20 opacity-30 pointer-events-none z-15">
         <svg viewBox="0 0 100 100" className="w-full h-full">
-          <path d="M10 10 Q50 10 90 50 Q50 90 10 90 Q10 50 10 10 Z" fill="none" stroke="#4A7C6E" strokeWidth="2" strokeDasharray="5,5"/>
-          <circle cx="50" cy="50" r="3" fill="#4A7C6E"/>
+          <path d="M20 20 Q50 10 80 20 Q90 50 80 80 Q50 90 20 80 Q10 50 20 20 Z" fill="none" stroke="#4A7C6E" strokeWidth="2"/>
+          <path d="M30 30 Q50 25 70 30 Q75 50 70 70 Q50 75 30 70 Q25 50 30 30 Z" fill="none" stroke="#A0C6B7" strokeWidth="1.5"/>
+          <circle cx="50" cy="50" r="4" fill="#4A7C6E" opacity="0.6"/>
+          <circle cx="35" cy="35" r="2" fill="#A0C6B7" opacity="0.8"/>
+          <circle cx="65" cy="65" r="2" fill="#A0C6B7" opacity="0.8"/>
         </svg>
       </div>
       
-      <div className="fixed top-4 right-4 w-16 h-16 opacity-20 pointer-events-none z-10">
+      <div className="fixed top-8 right-8 w-20 h-20 opacity-30 pointer-events-none z-15">
         <svg viewBox="0 0 100 100" className="w-full h-full">
-          <path d="M90 10 Q50 10 10 50 Q50 90 90 90 Q90 50 90 10 Z" fill="none" stroke="#4A7C6E" strokeWidth="2" strokeDasharray="5,5"/>
-          <circle cx="50" cy="50" r="3" fill="#4A7C6E"/>
+          <path d="M80 20 Q50 10 20 20 Q10 50 20 80 Q50 90 80 80 Q90 50 80 20 Z" fill="none" stroke="#4A7C6E" strokeWidth="2"/>
+          <path d="M70 30 Q50 25 30 30 Q25 50 30 70 Q50 75 70 70 Q75 50 70 30 Z" fill="none" stroke="#A0C6B7" strokeWidth="1.5"/>
+          <circle cx="50" cy="50" r="4" fill="#4A7C6E" opacity="0.6"/>
+          <circle cx="65" cy="35" r="2" fill="#A0C6B7" opacity="0.8"/>
+          <circle cx="35" cy="65" r="2" fill="#A0C6B7" opacity="0.8"/>
         </svg>
       </div>
       
-      <div className="fixed bottom-4 left-4 w-16 h-16 opacity-20 pointer-events-none z-10">
+      <div className="fixed bottom-8 left-8 w-20 h-20 opacity-30 pointer-events-none z-15">
         <svg viewBox="0 0 100 100" className="w-full h-full">
-          <path d="M10 90 Q50 90 90 50 Q50 10 10 10 Q10 50 10 90 Z" fill="none" stroke="#4A7C6E" strokeWidth="2" strokeDasharray="5,5"/>
-          <circle cx="50" cy="50" r="3" fill="#4A7C6E"/>
+          <path d="M20 80 Q50 90 80 80 Q90 50 80 20 Q50 10 20 20 Q10 50 20 80 Z" fill="none" stroke="#4A7C6E" strokeWidth="2"/>
+          <path d="M30 70 Q50 75 70 70 Q75 50 70 30 Q50 25 30 30 Q25 50 30 70 Z" fill="none" stroke="#A0C6B7" strokeWidth="1.5"/>
+          <circle cx="50" cy="50" r="4" fill="#4A7C6E" opacity="0.6"/>
+          <circle cx="35" cy="65" r="2" fill="#A0C6B7" opacity="0.8"/>
+          <circle cx="65" cy="35" r="2" fill="#A0C6B7" opacity="0.8"/>
         </svg>
       </div>
       
-      <div className="fixed bottom-4 right-4 w-16 h-16 opacity-20 pointer-events-none z-10">
+      <div className="fixed bottom-8 right-8 w-20 h-20 opacity-30 pointer-events-none z-15">
         <svg viewBox="0 0 100 100" className="w-full h-full">
-          <path d="M90 90 Q50 90 10 50 Q50 10 90 10 Q90 50 90 90 Z" fill="none" stroke="#4A7C6E" strokeWidth="2" strokeDasharray="5,5"/>
-          <circle cx="50" cy="50" r="3" fill="#4A7C6E"/>
+          <path d="M80 80 Q50 90 20 80 Q10 50 20 20 Q50 10 80 20 Q90 50 80 80 Z" fill="none" stroke="#4A7C6E" strokeWidth="2"/>
+          <path d="M70 70 Q50 75 30 70 Q25 50 30 30 Q50 25 70 30 Q75 50 70 70 Z" fill="none" stroke="#A0C6B7" strokeWidth="1.5"/>
+          <circle cx="50" cy="50" r="4" fill="#4A7C6E" opacity="0.6"/>
+          <circle cx="65" cy="65" r="2" fill="#A0C6B7" opacity="0.8"/>
+          <circle cx="35" cy="35" r="2" fill="#A0C6B7" opacity="0.8"/>
         </svg>
       </div>
+      
+      {/* Vintage Decorative Top Border */}
+      <div className="fixed top-0 left-0 right-0 h-2 z-20 pointer-events-none"
+           style={{
+             background: 'repeating-linear-gradient(90deg, #4A7C6E 0px, #4A7C6E 20px, #A0C6B7 20px, #A0C6B7 40px)',
+           }}
+      />
+      
+      {/* Vintage Decorative Bottom Border */}
+      <div className="fixed bottom-0 left-0 right-0 h-2 z-20 pointer-events-none"
+           style={{
+             background: 'repeating-linear-gradient(90deg, #4A7C6E 0px, #4A7C6E 20px, #A0C6B7 20px, #A0C6B7 40px)',
+           }}
+      />
       {/* Enhanced Vintage Navbar */}
       <nav
         className={`fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-500
@@ -206,9 +246,18 @@ const Index = () => {
         </div>
       </nav>
       <div className="relative">
-        <Hero data-aos="fade-down" />
+        {/* Vintage Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-10 pointer-events-none"
+             style={{
+               background: 'repeating-linear-gradient(90deg, rgba(74, 124, 110, 0.3) 0px, rgba(74, 124, 110, 0.3) 15px, transparent 15px, transparent 30px)',
+             }}
+        />
+        <div className="vintage-section-wrapper">
+          <Hero data-aos="fade-down" />
+        </div>
         <ParticleBackground theme="dark" />
       </div>
+      
       {/* Enhanced Vintage Chevron/V shape divider with scrolling skills */}
       <div className="relative left-1/2 right-1/2 -translate-x-1/2 w-screen" style={{ height: '120px', zIndex: 30, marginBottom: '-40px' }}>
         {/* Vintage Texture Overlay on Divider */}
@@ -280,20 +329,56 @@ const Index = () => {
           </div>
         </div>
       </div>
+      
       <div className="relative">
-        <About data-aos="fade-up" />
+        {/* Vintage Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-10 pointer-events-none"
+             style={{
+               background: 'repeating-linear-gradient(90deg, rgba(74, 124, 110, 0.3) 0px, rgba(74, 124, 110, 0.3) 15px, transparent 15px, transparent 30px)',
+             }}
+        />
+        <div className="vintage-section-wrapper">
+          <About data-aos="fade-up" />
+        </div>
         <ParticleBackground theme="light" />
       </div>
+      
       <div className="relative">
-        <ShowcaseProjects data-aos="fade-up" />
+        {/* Vintage Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-10 pointer-events-none"
+             style={{
+               background: 'repeating-linear-gradient(90deg, rgba(74, 124, 110, 0.3) 0px, rgba(74, 124, 110, 0.3) 15px, transparent 15px, transparent 30px)',
+             }}
+        />
+        <div className="vintage-section-wrapper">
+          <ShowcaseProjects data-aos="fade-up" />
+        </div>
         <ParticleBackground theme="light" />
       </div>
+      
       <div className="relative">
-        <Certificate data-aos="fade-up" />
+        {/* Vintage Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-10 pointer-events-none"
+             style={{
+               background: 'repeating-linear-gradient(90deg, rgba(74, 124, 110, 0.3) 0px, rgba(74, 124, 110, 0.3) 15px, transparent 15px, transparent 30px)',
+             }}
+        />
+        <div className="vintage-section-wrapper">
+          <Certificate data-aos="fade-up" />
+        </div>
         {/* ParticleBackground removed from Certificate section */}
       </div>
+      
       <div className="relative">
-        <Contact data-aos="fade-up" />
+        {/* Vintage Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-10 pointer-events-none"
+             style={{
+               background: 'repeating-linear-gradient(90deg, rgba(74, 124, 110, 0.3) 0px, rgba(74, 124, 110, 0.3) 15px, transparent 15px, transparent 30px)',
+             }}
+        />
+        <div className="vintage-section-wrapper">
+          <Contact data-aos="fade-up" />
+        </div>
         <ParticleBackground theme="light" />
       </div>
     </div>
