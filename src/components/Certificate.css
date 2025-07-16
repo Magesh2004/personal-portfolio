@@ -1,0 +1,9 @@
+@keyframes float-ribbon {
+  0% { transform: rotate(-18deg) translateY(0); }
+  50% { transform: rotate(-18deg) translateY(-18px); }
+  100% { transform: rotate(-18deg) translateY(0); }
+}
+
+.animate-float-ribbon {
+  animation: float-ribbon 3.2s ease-in-out infinite;
+} 
