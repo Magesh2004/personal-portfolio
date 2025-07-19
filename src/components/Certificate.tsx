@@ -1,115 +1,134 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import './Certificate.css';
+import gfgMlImg from "@/assets/certificate/gfg-ml.png";
+import gfgLogoImg from "@/assets/certificate/gfg-logo.png";
+import guviDsImg from "@/assets/certificate/guvi_ds.png";
+import guviLogoImg from "@/assets/certificate/guvi-logo.png";
+import gfgFullImg from "@/assets/certificate/gfg-full.png";
+import hrCssImg from "@/assets/certificate/hr-css.png";
+import hrLogoImg from "@/assets/certificate/hr-logo.png";
+import emcJsImg from "@/assets/certificate/emc-js.png";
+import emcLogoImg from "@/assets/certificate/emc-logo.png";
+import slHtmlImg from "@/assets/certificate/sl-html.png";
+import slLogoImg from "@/assets/certificate/sl-logo.png";
+import guviPyImg from "@/assets/certificate/guvi_py.png";
+import hrPyImg from "@/assets/certificate/hr-py.png";
+import slPyImg from "@/assets/certificate/sl-py.png";
+import sMlMatImg from "@/assets/certificate/s-ml-mat.png";
+import sMatImg from "@/assets/certificate/s-mat.png";
+import sLogoImg from "@/assets/certificate/s-logo.png";
+import sqlSimpleImg from "@/assets/certificate/sql_simple.png";
+import skillupLogoImg from "@/assets/certificate/skillup-logo.svg";
 
 const certificates = [
   {
-    src: "/certificates/gfg-ml.png",
+    src: gfgMlImg,
     alt: "ML & DS Certificate (GeeksforGeeks)",
     title: "ML & DS",
     subtitle: "(GEEKSFORGEEKS)",
     description: "Machine Learning & Data Science certificate from GeeksforGeeks.",
-    logo: "/certificates/gfg-logo.png",
+    logo: gfgLogoImg,
     org: "GEEKS FOR GEEKS",
     verify: "https://www.geeksforgeeks.org/certificate/028bd3641239585ca2695348c4e617ba"
   },
   {
-    src: "/certificates/guvi_ds.png",
+    src: guviDsImg,
     alt: "Data Science Certificate (GUVI)",
     title: "Data Science",
     subtitle: "(GUVI)",
     description: "Data Science certificate from GUVI.",
-    logo: "/certificates/guvi-logo.png",
+    logo: guviLogoImg,
     org: "GUVI",
     verify: "https://www.guvi.in/certificate?id=7w401o113KA09a9881"
   },
   {
-    src: "/certificates/gfg-full.png",
+    src: gfgFullImg,
     alt: "Full Stack Certificate (GeeksforGeeks)",
     title: "Full Stack Development",
     subtitle: "(GEEKSFORGEEKS)",
     description: "Full Stack Development certificate from GeeksforGeeks.",
-    logo: "/certificates/gfg-logo.png",
+    logo: gfgLogoImg,
     org: "GEEKS FOR GEEKS",
     verify: "https://media.geeksforgeeks.org/courses/certificates/3f37fdfa3b75f757c4ee4985ebf09d89.pdf"
   },
   {
-    src: "/certificates/hr-css.png",
+    src: hrCssImg,
     alt: "CSS Certificate (HackerRank)",
     title: "CSS",
     subtitle: "(HACKERRANK)",
     description: "CSS certificate from HackerRank.",
-    logo: "/certificates/hr-logo.png",
+    logo: hrLogoImg,
     org: "HACKERRANK",
     verify: "https://www.hackerrank.com/certificates/c11446d612ba"
   },
   {
-    src: "/certificates/emc-js.png",
+    src: emcJsImg,
     alt: "JavaScript Certificate (ErrorMakesClever)",
     title: "JavaScript",
     subtitle: "(ERRORMAKESCLEVER)",
     description: "JavaScript certificate from ErrorMakesClever.",
-    logo: "/certificates/emc-logo.png",
+    logo: emcLogoImg,
     org: "ERRORMAKESCLEVER",
     verify: "https://errormakesclever.graphy.com/share-certificate?serialno=ABS4QNTB"
   },
   {
-    src: "/certificates/sl-html.png",
+    src: slHtmlImg,
     alt: "HTML Certificate (SoloLearn)",
     title: "HTML",
     subtitle: "(SOLOLEARN)",
     description: "HTML certificate from SoloLearn.",
-    logo: "/certificates/sl-logo.png",
+    logo: slLogoImg,
     org: "SOLOLEARN",
     verify: "https://www.sololearn.com/en/certificates/CC-ZMUZOFI7"
   },
   {
-    src: "/certificates/guvi_py.png",
+    src: guviPyImg,
     alt: "Python Certificate (GUVI)",
     title: "Python",
     subtitle: "(GUVI)",
     description: "Python certificate from GUVI.",
-    logo: "/certificates/guvi-logo.png",
+    logo: guviLogoImg,
     org: "GUVI",
     verify: "https://www.guvi.in/verify-certificate?id=qUBY521610k80w7C22&course=pythonzerotoheroenglish"
   },
   {
-    src: "/certificates/hr-py.png",
+    src: hrPyImg,
     alt: "Python Certificate (HackerRank)",
     title: "Python",
     subtitle: "(HACKERRANK)",
     description: "Python certificate from HackerRank.",
-    logo: "/certificates/hr-logo.png",
+    logo: hrLogoImg,
     org: "HACKERRANK",
     verify: "https://www.hackerrank.com/certificates/5bbf7dc67951"
   },
   {
-    src: "/certificates/sl-py.png",
+    src: slPyImg,
     alt: "Python Certificate (SoloLearn)",
     title: "Python",
     subtitle: "(SOLOLEARN)",
     description: "Python certificate from SoloLearn.",
-    logo: "/certificates/sl-logo.png",
+    logo: slLogoImg,
     org: "SOLOLEARN",
     verify: "https://www.sololearn.com/en/certificates/CC-TRBTBNVT"
   },
   {
-    src: "/certificates/s-ml-mat.png",
+    src: sMlMatImg,
     alt: "ML & Math Certificate (Scaler)",
     title: "ML & Math",
     subtitle: "(SCALER)",
     description: "Machine Learning & Math certificate from Scaler.",
-    logo: "/certificates/s-logo.png",
+    logo: sLogoImg,
     org: "SCALER",
     verify: "https://moonshot.scaler.com/s/sl/_RJgtLUiPP?_gl=1*17bjuye*_ga*OTMxNzY4ODM4LjE2OTE1NDk5MDg.*_ga_53S71ZZG1X*MTcwOTQ0NDQzNC4yOS4xLjE3MDk0NDkzNjcuMC4wLjA."
   },
   {
-    src: "/certificates/s-mat.png",
+    src: sMatImg,
     alt: "Math Certificate (Scaler)",
     title: "Math",
     subtitle: "(SCALER)",
     description: "Math certificate from Scaler.",
-    logo: "/certificates/s-logo.png",
+    logo: sLogoImg,
     org: "SCALER",
     verify: "https://moonshot.scaler.com/s/sl/VIWl93nQYD"
   },

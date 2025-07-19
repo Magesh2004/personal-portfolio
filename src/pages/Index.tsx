@@ -7,6 +7,7 @@ import ParticleBackground from "@/components/ParticleBackground";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import resumePdf from "@/assets/MageshBalram.pdf";
 
 const techStack = [
   "PYTHON", "NODE", "EXPRESS", "MONGODB", "REACT", "BLENDER", "MYSQL", "JAVA"
@@ -174,10 +175,11 @@ const Index = () => {
           </div>
           {/* Download CV Button (desktop) */}
           <a
-            href="#"
+            href={resumePdf}
             className="bg-background-dark text-white px-6 py-2 rounded-full font-inter shadow hover:bg-accent-primary hover:text-background-dark transition-all duration-300 text-sm hover:scale-105 hover:shadow-accent max-md:hidden"
             style={{ minWidth: 120, textAlign: 'center' }}
             data-aos="zoom-in"
+            download
           >
             Download CV
           </a>
@@ -231,9 +233,10 @@ const Index = () => {
                   </div>
                   <div className="px-6 pb-8">
                     <a
-                      href="#"
+                      href={resumePdf}
                       className="block w-full bg-background-dark text-white px-6 py-3 rounded-full font-inter shadow hover:bg-accent-primary hover:text-background-dark transition-all duration-300 text-base hover:scale-105 hover:shadow-accent text-center"
                       style={{ minWidth: 120 }}
+                      download
                     >
                       Download CV
                     </a>

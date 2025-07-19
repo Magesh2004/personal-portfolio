@@ -3,18 +3,43 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
-const placeholder = "/placeholder.svg";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import calculatorImg from "@/assets/project/calculator.png";
+import rockPaperScissorImg from "@/assets/project/rock-paper-scissor.png";
+import handCricketJsImg from "@/assets/project/hand-cricket-js.png";
+import registrationJsImg from "@/assets/project/registration-js.png";
+import toDoSimpleFrontImg from "@/assets/project/to-do-simple-front.png";
+import tvShowSearchFrontImg from "@/assets/project/tv-show-search-front.png";
+import colorBoxImg from "@/assets/project/color-box.png";
+import countryImg from "@/assets/project/country.png";
+import dadjokeReactImg from "@/assets/project/dadjoke_react.png";
+import narutoInfoImg from "@/assets/project/naruto-info.png";
+import todoListReactFrontImg from "@/assets/project/todo-list-react-front.png";
+import weatherAppImg from "@/assets/project/weather-app.png";
+import markdownNoteTakingImg from "@/assets/project/markdown-note-taking.png";
+import quicklinkImg from "@/assets/project/quicklink.png";
+import toDoFullImg from "@/assets/project/to-do-full.png";
+import yelpCampImg from "@/assets/project/yelp-camp.png";
+import placeholder from "@/assets/placeholder.svg";
+import resumePdf from "@/assets/MageshBalram.pdf";
 
 const allProjects = [
   // Frontend (Vanilla JS)
   {
     title: "Calculator JS",
     description: "A simple calculator built with vanilla JavaScript.",
-    image: "/project/calculator.png",
+    image: calculatorImg,
     category: "Frontend",
     tech: ["HTML", "CSS", "JavaScript"],
     code: "https://github.com/magesh2004/calculator-js",
+  },
+  {
+    title: "rock-paper-scissor",
+    description: "A simple rock paper scissor game built with vanilla JavaScript.",
+    image: rockPaperScissorImg,
+    category: "Frontend",
+    tech: ["HTML", "CSS", "JavaScript"],
+    code: "https://github.com/Magesh2004/rock-paper-scissor",
   },
   {
     title: "Frontend Minis",
@@ -27,7 +52,7 @@ const allProjects = [
   {
     title: "Hand Cricket JS",
     description: "A hand cricket game implemented in JavaScript.",
-    image: "/project/hand-cricket-js.png",
+    image: handCricketJsImg,
     category: "Frontend",
     tech: ["HTML", "CSS", "JavaScript"],
     code: "https://github.com/magesh2004/hand-cricket-js",
@@ -35,7 +60,7 @@ const allProjects = [
   {
     title: "Registration JS",
     description: "A registration form with validation using JavaScript.",
-    image: "/project/registration-js.png",
+    image: registrationJsImg,
     category: "Frontend",
     tech: ["HTML", "CSS", "JavaScript"],
     code: "https://github.com/magesh2004/registration-js",
@@ -43,7 +68,7 @@ const allProjects = [
   {
     title: "To-Do Simple Front",
     description: "A simple to-do list app built with vanilla JS.",
-    image: "/project/to-do-simple-front.png",
+    image: toDoSimpleFrontImg,
     category: "Frontend",
     tech: ["HTML", "CSS", "JavaScript"],
     code: "https://github.com/magesh2004/to-do-simple-front",
@@ -51,7 +76,7 @@ const allProjects = [
   {
     title: "TV Show Search Front",
     description: "A TV show search app using a public API.",
-    image: "/project/tv-show-search-front.png",
+    image: tvShowSearchFrontImg,
     category: "Frontend",
     tech: ["HTML", "CSS", "JavaScript", "API"],
     code: "https://github.com/magesh2004/tv-show-search-front",
@@ -60,7 +85,7 @@ const allProjects = [
   {
     title: "Color Box",
     description: "A color box generator and picker built with React.",
-    image: "/project/color-box.png",
+    image: colorBoxImg,
     category: "React",
     tech: ["React", "CSS"],
     code: "https://github.com/magesh2004/color-box",
@@ -68,7 +93,7 @@ const allProjects = [
   {
     title: "Country",
     description: "Country info explorer using React and REST APIs.",
-    image: "/project/country.png",
+    image: countryImg,
     category: "React",
     tech: ["React", "REST API", "CSS"],
     code: "https://github.com/magesh2004/Country",
@@ -76,7 +101,7 @@ const allProjects = [
   {
     title: "Dad's Joke React",
     description: "A fun app to fetch and display dad jokes using React.",
-    image: "/project/dadjoke_react.png",
+    image: dadjokeReactImg,
     category: "React",
     tech: ["React", "API", "CSS"],
     code: "https://github.com/magesh2004/dadsjoke_react",
@@ -84,7 +109,7 @@ const allProjects = [
   {
     title: "Naruto Info",
     description: "Naruto anime info app built with React.",
-    image: "/project/naruto-info.png",
+    image: narutoInfoImg,
     category: "React",
     tech: ["React", "API", "CSS"],
     code: "https://github.com/magesh2004/naruto-info",
@@ -92,7 +117,7 @@ const allProjects = [
   {
     title: "To-Do List React Front",
     description: "A to-do list app built with React.",
-    image: "/project/todo-list-react-front.png",
+    image: todoListReactFrontImg,
     category: "React",
     tech: ["React", "CSS", "LocalStorage"],
     code: "https://github.com/magesh2004/todo-list-react-front",
@@ -100,7 +125,7 @@ const allProjects = [
   {
     title: "Weather App",
     description: "A weather forecast app using React and OpenWeather API.",
-    image: "/project/weather-app.png",
+    image: weatherAppImg,
     category: "React",
     tech: ["React", "API", "CSS"],
     code: "https://github.com/magesh2004/weather-app",
@@ -109,7 +134,7 @@ const allProjects = [
   {
     title: "Markdown Note Taking",
     description: "A fullstack markdown note-taking app.",
-    image: "/project/markdown-note-taking.png",
+    image: markdownNoteTakingImg,
     category: "Fullstack",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     code: "https://github.com/magesh2004/markdown-note-taking",
@@ -117,7 +142,7 @@ const allProjects = [
   {
     title: "QuickLink",
     description: "A fullstack link management and bookmarking app.",
-    image: "/project/quicklink.png",
+    image: quicklinkImg,
     category: "Fullstack",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     code: "https://github.com/magesh2004/QuickLink",
@@ -125,7 +150,7 @@ const allProjects = [
   {
     title: "To-Do",
     description: "A fullstack to-do application with user authentication.",
-    image: "/project/to-do-full.png",
+    image: toDoFullImg,
     category: "Fullstack",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     code: "https://github.com/magesh2004/To-Do",
@@ -133,7 +158,7 @@ const allProjects = [
   {
     title: "YelpCamp",
     description: "A fullstack YelpCamp clone for camp reviews.",
-    image: "/project/yelp-camp.png",
+    image: yelpCampImg,
     category: "Fullstack",
     tech: ["Node.js", "Express", "MongoDB", "EJS", "Passport"],
     code: "https://github.com/Magesh2004/YelpCamp",
@@ -180,6 +205,9 @@ export default function ProjectsPage() {
   const [titleText, setTitleText] = useState("");
   const projects = selected === "All" ? allProjects : allProjects.filter(p => p.category === selected);
   const canvasRef = useRef(null);
+  const [navVisible, setNavVisible] = useState(true);
+  const [navShow, setNavShow] = useState(true);
+  const lastScrollY = useRef(0);
 
   // Typewriter effect for title
   useEffect(() => {
@@ -230,7 +258,92 @@ export default function ProjectsPage() {
     return () => cancelAnimationFrame(animationId);
   }, []);
 
+  // Navbar scroll logic (optional, for consistency)
+  useEffect(() => {
+    setTimeout(() => setNavVisible(true), 100);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY.current && currentY > 40) {
+        setNavShow(false); // scrolling down
+      } else {
+        setNavShow(true); // scrolling up
+      }
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Always scroll to top when this page is loaded
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
   return (
+    <>
+      {/* Projects Navbar */}
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${navVisible ? 'opacity-100' : 'opacity-0 -translate-y-6'} ${navShow ? 'translate-y-0' : '-translate-y-full opacity-0'} shadow-soft`}
+        style={{
+          background: 'linear-gradient(135deg, #F5F2ED 0%, #E8D9C4 100%)',
+          borderBottom: '2px solid #A0C6B7',
+          minHeight: '56px',
+          borderRadius: '0 0 1.5rem 1.5rem',
+          boxShadow: '0 4px 24px -8px rgba(160, 198, 183, 0.15)',
+        }}
+        data-aos="fade-down"
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
+          {/* Logo/Name or Home */}
+          <Link to="/" className="font-gayathri text-xl font-bold tracking-widest text-accent-dark hover:text-accent-primary transition-colors duration-200 px-4 py-2 rounded-lg bg-accent-light/30 hover:bg-accent-light/50 shadow-none">Home</Link>
+          {/* Download CV Button (desktop) */}
+          <a
+            href={resumePdf}
+            className="bg-accent-primary text-white px-6 py-2 rounded-full font-inter shadow hover:bg-accent-dark hover:text-background-dark transition-all duration-300 text-sm hover:scale-105 hover:shadow-accent max-md:hidden border-2 border-accent-light"
+            style={{ minWidth: 120, textAlign: 'center' }}
+            data-aos="zoom-in"
+            download
+          >
+            Download CV
+          </a>
+          {/* Hamburger for mobile */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button aria-label="Open menu" className="p-2 rounded focus:outline-none focus:ring-2 focus:ring-accent-primary bg-accent-light/40 hover:bg-accent-light/70">
+                  {/* Hamburger icon */}
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-64 p-0 bg-background-warm border-l-2 border-accent-light rounded-l-2xl">
+                <div className="flex flex-col h-full justify-between">
+                  <div className="flex flex-col gap-8 mt-16 px-6">
+                    <Link
+                      to="/"
+                      className="text-lg font-inria py-2 border-b border-accent-light hover:text-accent-primary transition-colors duration-200 cursor-pointer"
+                    >
+                      Home
+                    </Link>
+                  </div>
+                  <div className="px-6 pb-8">
+                    <a
+                      href={resumePdf}
+                      className="block w-full bg-accent-primary text-white px-6 py-3 rounded-full font-inter shadow hover:bg-accent-dark hover:text-background-dark transition-all duration-300 text-base hover:scale-105 hover:shadow-accent text-center border-2 border-accent-light"
+                      style={{ minWidth: 120 }}
+                      download
+                    >
+                      Download CV
+                    </a>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </nav>
+      {/* Spacer for navbar */}
+      <div style={{ height: 72 }} />
+      {/* Main Projects Section */}
     <section className="py-16 bg-background min-h-screen relative overflow-hidden pt-24">
       {/* Enhanced Particle Canvas */}
       <canvas 
@@ -419,5 +532,6 @@ export default function ProjectsPage() {
         </AnimatePresence>
       </div>
     </section>
+    </>
   );
 }

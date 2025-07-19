@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParticleBackground from "./ParticleBackground";
+import profileImg from "@/assets/profile1.jpg";
 
 const Hero = () => {
   const techStack = [
@@ -72,7 +73,7 @@ const Hero = () => {
             <a href="https://www.linkedin.com/in/magesh-balram/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 bg-accent-primary/10 rounded-full flex items-center justify-center hover:bg-accent-primary/20 transition-all duration-300 cursor-pointer">
               <Linkedin className="w-5 h-5 text-accent-primary" />
             </a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-10 h-10 bg-accent-primary/10 rounded-full flex items-center justify-center hover:bg-accent-primary/20 transition-all duration-300 cursor-pointer">
+            <a href="https://x.com/mageshbalram" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-10 h-10 bg-accent-primary/10 rounded-full flex items-center justify-center hover:bg-accent-primary/20 transition-all duration-300 cursor-pointer">
               <Twitter className="w-5 h-5 text-accent-primary" />
             </a>
             <a href="https://www.instagram.com/___magesh.____/?next=%2F" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 bg-accent-primary/10 rounded-full flex items-center justify-center hover:bg-accent-primary/20 transition-all duration-300 cursor-pointer">
@@ -85,7 +86,7 @@ const Hero = () => {
             {/* Background decorative circle */}
           <div className="absolute inset-0 bg-gradient-accent rounded-full opacity-20 animate-fade-in-up animate-scale-in" style={{ animationDelay: '0.2s' }}></div>
           {/* Profile image */}
-          <img src="/profile1.jpg" alt="Profile" className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-full z-10 shadow-lg animate-fade-in-up animate-scale-in animate-giggle" style={{ animationDelay: '0.4s' }} />
+          <img src={profileImg} alt="Profile" className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-full z-10 shadow-lg animate-fade-in-up animate-scale-in animate-giggle" style={{ animationDelay: '0.4s' }} />
           {/* Profile image placeholder (now behind the real image) */}
           <div className="absolute inset-4 bg-accent-primary/10 rounded-full flex items-center justify-center z-0 animate-fade-in-up animate-scale-in" style={{ animationDelay: '0.3s' }}>
             <div className="w-28 h-28 bg-accent-primary/20 rounded-full animate-fade-in-up animate-scale-in" style={{ animationDelay: '0.5s' }}></div>

@@ -2,14 +2,17 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Projects.css";
 import { Link } from "react-router-dom";
+import todoFullImg from "@/assets/project/to-do-full.png";
+import yelpCampImg from "@/assets/project/yelp-camp.png";
+import quicklinkImg from "@/assets/project/quicklink.png";
 
   const projects = [
     {
     title: "To-Do Full",
       description:
       "A full-featured Category based to-do application with advanced task management and productivity tools.",
-    image: "/project/to-do-full.png",
-    screenshots: ["/project/to-do-full.png"],
+    image: todoFullImg,
+    screenshots: [todoFullImg],
     code: "https://github.com/Magesh2004/To-Do", 
     tech: ["React", "TypeScript", "Node.js", "Express.js"],
   },
@@ -17,8 +20,8 @@ import { Link } from "react-router-dom";
     title: "Yelp Camp",
       description:
       "Yelp camp is a camping website where you can search for camps and add and view reviews.",
-    image: "/project/yelp-camp.png",
-    screenshots: ["/project/yelp-camp.png"],
+    image: yelpCampImg,
+    screenshots: [yelpCampImg],
       code: "https://github.com/Magesh2004/YelpCamp",
     demo: "#", 
     tech: ["Node.js", "Express", "MongoDB", "EJS", "Passport"],
@@ -27,8 +30,8 @@ import { Link } from "react-router-dom";
     title: "Quicklink",
       description:
       "Quicklink is a link bookmark app for ESEVAI MAIYAM. Save and organize your links with a user-friendly interface.",
-    image: "/project/quicklink.png",
-    screenshots: ["/project/quicklink.png"],
+    image: quicklinkImg,
+    screenshots: [quicklinkImg],
       code: "https://github.com/Magesh2004/QuickLink",
     demo: "#", 
     tech: ["Node.js", "Express", "MongoDB", "EJS", "Passport","Bootstrap"],
